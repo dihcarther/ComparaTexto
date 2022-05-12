@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "94652a64-f6e0-4cb1-b944-ae028f1f0cc8": {
+      "ProjectGuid": "94652a64-f6e0-4cb1-b944-ae028f1f0cc8",
+      "DisplayName": "MarcaTexto",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Arquivos Diversos",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}

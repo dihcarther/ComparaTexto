@@ -1,0 +1,88 @@
+﻿@using System.Collections.Specialized
+@model MarcaTexto.Texto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes dos textos..</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Texto1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Texto1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Texto2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Texto2)
+        </dd>
+    </dl>
+    
+
+    <hr />
+    <dl>
+         <h4>Comparando Diferença entre os textos.</h4>
+        <dt></dt>
+    
+       <!--Inicia teste usando expressões regulares usando as variaveis do texto 1 e texto2--->
+    
+    <p>@{ 
+            var NovoTexto1 = Model.Texto1;
+            var NovoTexto2 = Model.Texto2;
+
+
+             
+
+            StringCollection texto1 = new StringCollection();
+            StringCollection texto2 = new StringCollection();
+            texto1.AddRange(System.Text.RegularExpressions.Regex.Split(NovoTexto1, @"\b(\w+)(\W){1,2}"));
+            texto2.AddRange(System.Text.RegularExpressions.Regex.Split(NovoTexto2, @"\b(\w+)(\W){1,2}"));
+            
+            for (int i = 0; i < texto1.Count; i++)
+            {
+
+              
+                if (!texto1.Contains(texto2[i]))
+                {
+                      
+                     @Html.Raw("[<b>") 
+                     
+                     @Html.Raw(texto1[i].ToString());@Html.Raw("]</b>");
+         
+                         
+                }
+                else{
+                      
+                       
+                      @Html.Raw(texto1[i].ToString());
+ 
+                       
+                    }
+            
+            } @Html.Raw("<br>")
+            @Html.Raw(NovoTexto2); 
+  
+ }
+ 
+    </p>
+    
+           </dt>
+           </dl>
+           </hr>
+
+       
+
+
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a asp-action="Index">Voltar para Lista</a>
+</div>
